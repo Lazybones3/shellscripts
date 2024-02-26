@@ -12,6 +12,13 @@ PORT=10000
 UUID=$(cat /proc/sys/kernel/random/uuid)
 WS_PATH="/news"
 
+echo -n "Do you want to install letsencrypt? [y/n] "
+read is_install_letsencrypt
+if [ "$is_install_letsencrypt" = "y" ] || [ "$is_install_letsencrypt" = "yes" ];
+then
+	source letsencrypt.sh
+fi
+
 echo -n "Do you want to install nginx? [y/n] "
 read is_install_nginx
 if [ "$is_install_nginx" = "y" ] || [ "$is_install_nginx" = "yes" ];

@@ -10,21 +10,15 @@ echo "Your domain name is $DOMAIN_NAME."
 
 ENCRYPT_PATH="/etc/letsencrypt/live/$DOMAIN_NAME"
 
-echo -n "Do you want to install letsencry? [y/n] "
-read is_install_letsencry
-if [ "$is_install_letsencry" = "y" ] || [ "$is_install_letsencry" = "yes" ];
+echo -n "Do you want to install letsencrypt? [y/n] "
+read is_install_letsencrypt
+if [ "$is_install_letsencrypt" = "y" ] || [ "$is_install_letsencrypt" = "yes" ];
 then
-	apt install python3 python3-venv libaugeas0 python3-pip -y
-	apt-get remove certbot
-	pip3 install certbot
-	pip3 install pyOpenSSL==23.1.1
-	certbot certonly --standalone -d $DOMAIN_NAME
-
-	cp $ENCRYPT_PATH/fullchain.pem $ENCRYPT_PATH/$DOMAIN_NAME.crt
-	cp $ENCRYPT_PATH/private.pem $ENCRYPT_PATH/$DOMAIN_NAME.key
-
-	echo "finish install letsencry"
+	source letsencrypt.sh
 fi
+
+cp $ENCRYPT_PATH/fullchain.pem $ENCRYPT_PATH/$DOMAIN_NAME.crt
+cp $ENCRYPT_PATH/private.pem $ENCRYPT_PATH/$DOMAIN_NAME.key
 
 echo -n "Do you want to install go? [y/n] "
 read is_install_go
