@@ -1,6 +1,16 @@
 #!/bin/bash
 
-DOMAIN_NAME="abcgames.top"
+DOMAIN_NAME=""
+
+echo -n "Please input your domain name: "
+read DOMAIN_NAME
+if [ -z $DOMAIN_NAME ];
+then
+    echo "Domain name cannot be empty."
+    exit 1;
+fi
+echo "Your domain name is $DOMAIN_NAME."
+
 ENCRYPT_PATH="/etc/letsencrypt/live/$DOMAIN_NAME"
 
 echo -n "Do you want to install letsencry? [y/n] "
