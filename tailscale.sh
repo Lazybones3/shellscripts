@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOMAIN_NAME = "abcgames.top"
-ENCRYPT_PATH = "/etc/letsencrypt/live/$DOMAIN_NAME"
+DOMAIN_NAME="abcgames.top"
+ENCRYPT_PATH="/etc/letsencrypt/live/$DOMAIN_NAME"
 
 echo -n "Do you want to install letsencry? [y/n] "
 read is_install_letsencry
