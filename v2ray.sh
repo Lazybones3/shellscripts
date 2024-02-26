@@ -1,9 +1,6 @@
 #!/bin/bash
 
-DOMAIN_NAME=""
-
-echo -n "Please input your domain name: "
-read DOMAIN_NAME
+DOMAIN_NAME=$(cat ./domain.txt)
 if [ -z $DOMAIN_NAME ];
 then
     echo "Domain name cannot be empty."
