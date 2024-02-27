@@ -43,7 +43,7 @@ then
 	[Service]
 	User=root
 	Restart=always
-	ExecStart=$HOME/go/bin/derper -hostname $DOMAIN_NAME -a :33445 -http-port 33446 -certmode manual -certdir $ENCRYPT_PATH
+	ExecStart=$HOME/go/bin/derper -hostname $DOMAIN_NAME -a :33445 -http-port 33446 -certmode manual -certdir $ENCRYPT_PATH --verify-clients
 	RestartPreventExitStatus=1
 	[Install]
 	WantedBy=multi-user.target
@@ -51,8 +51,11 @@ then
 
 	systemctl enable derp
 	#systemctl start derp
-
 	echo "finish install DERP Server"
+
+	curl -fsSL https://tailscale.com/install.sh | sh
+	#tailscale up
+	echo "finish install DERP Client"
 fi
 
 echo "finish all!!!"
